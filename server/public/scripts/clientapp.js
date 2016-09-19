@@ -22,7 +22,7 @@ $(document).ready(function () {
     var newTreat = {
       name: treateName,
       description: treatDescription,
-      url: treateURL
+      pic: treateURL
     };
 
     postTreat(newTreat);

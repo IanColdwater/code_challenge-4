@@ -39,7 +39,7 @@ app.get( '/treats', function( req, res ){
       // array to hold our results
       var treatArray = [];
       // get all the things from table and hold the query results in a variable
-      var queryResults = client.query( 'SELECT name, pic FROM treat' );
+      var queryResults = client.query( 'SELECT * FROM treat' );
       queryResults.on( 'row' , function( row ){
         // push each row into results array
         treatArray.push( row );
@@ -92,7 +92,7 @@ app.post( '/treats', urlencodedParser, function( req, res ){
     else{
       console.log( 'connected to database' );
       // insert new item to database
-      client.query( 'INSERT INTO treat ( description, pic ) VALUES ( $1, $2 )', [ req.body.description, req.body.pic] );
+      client.query( 'INSERT INTO treat ( name, description, pic ) VALUES ( $1, $2, $3 )', [ req.body.name, req.body.description, req.body.pic] );
     } // end no error
   }); // end pg connect
   // send back something so the client will get to "success"
